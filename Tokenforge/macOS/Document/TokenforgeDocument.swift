@@ -23,7 +23,28 @@ import UniformTypeIdentifiers
 /// about structure.
 ///
 @Observable
-final class TokenforgeDocument: ReferenceFileDocument {
+final class TokenforgeDocument: ReferenceFileDocument, @unchecked Sendable {
+
+    // `@unchecked Sendable` is deliberate. `@Observable` synthesizes a
+    // mutable backing store for `spec`, which trips Swift 6's strict
+    // Sendable check for the `ReferenceFileDocument`-inferred conformance.
+    // The class is actually safe:
+    //
+    // - All mutations to `spec` go through `TokenforgeDocument.edit(...)`
+    //   in `TokenforgeDocument+Undo.swift`, which is `@MainActor`-isolated.
+    // - The `nonisolated init(configuration:)` path reads `spec.json` from
+    //   its `configuration.file` parameter and assigns to `self.spec`
+    //   exactly once during construction, before the instance is visible
+    //   to any other thread.
+    // - The `nonisolated fileWrapper(snapshot:configuration:)` path
+    //   operates only on the `snapshot` parameter value, never on
+    //   `self.spec` directly.
+    // - Font registration from background reads hops to `@MainActor` via
+    //   `Task { @MainActor in FontRegistry.register(...) }` before
+    //   touching process-wide state.
+    //
+    // The compiler can't verify this through the macro-generated backing
+    // store, so we assert it manually.
 
     // MARK: - Bundle layout constants
 
