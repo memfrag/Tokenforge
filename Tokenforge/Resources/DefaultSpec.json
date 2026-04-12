@@ -1,0 +1,378 @@
+{
+  "schemaVersion": 1,
+  "meta": {
+    "name": "Acme Design System",
+    "version": "0.1.0",
+    "summary": "A calm, legible, task-focused iOS design system. One primary accent, strong spacing rhythm, clear action hierarchy.",
+    "author": "Tokenforge"
+  },
+  "primitives": {
+    "color": [
+      { "name": "white", "hex": "#FFFFFF" },
+      { "name": "gray-50", "hex": "#F9FAFB" },
+      { "name": "gray-100", "hex": "#F3F4F6" },
+      { "name": "gray-200", "hex": "#E5E7EB" },
+      { "name": "gray-500", "hex": "#6B7280" },
+      { "name": "gray-700", "hex": "#374151" },
+      { "name": "gray-900", "hex": "#111827" },
+      { "name": "blue-100", "hex": "#E0ECFF" },
+      { "name": "blue-500", "hex": "#2F6BFF" },
+      { "name": "blue-600", "hex": "#1E56E6" },
+      { "name": "green-500", "hex": "#10B981" },
+      { "name": "amber-500", "hex": "#F59E0B" },
+      { "name": "red-500", "hex": "#EF4444" }
+    ],
+    "spacing": [
+      { "name": "sp-0", "points": 0 },
+      { "name": "sp-1", "points": 4 },
+      { "name": "sp-2", "points": 8 },
+      { "name": "sp-3", "points": 12 },
+      { "name": "sp-4", "points": 16 },
+      { "name": "sp-5", "points": 20 },
+      { "name": "sp-6", "points": 24 },
+      { "name": "sp-8", "points": 32 }
+    ],
+    "radius": [
+      { "name": "sm", "points": 8 },
+      { "name": "md", "points": 12 },
+      { "name": "lg", "points": 16 },
+      { "name": "xl", "points": 24 }
+    ],
+    "typography": {
+      "fontFamilies": [
+        { "name": "base", "family": "SF Pro", "isCustom": false }
+      ],
+      "fontSizes": [
+        { "name": "xs", "points": 12 },
+        { "name": "sm", "points": 14 },
+        { "name": "md", "points": 16 },
+        { "name": "lg", "points": 20 },
+        { "name": "xl", "points": 24 },
+        { "name": "xxl", "points": 32 }
+      ],
+      "fontWeights": [
+        { "name": "regular", "weight": 400 },
+        { "name": "medium", "weight": 500 },
+        { "name": "semibold", "weight": 600 },
+        { "name": "bold", "weight": 700 }
+      ],
+      "lineHeights": [
+        { "name": "tight", "multiplier": 1.1 },
+        { "name": "normal", "multiplier": 1.4 },
+        { "name": "relaxed", "multiplier": 1.6 }
+      ]
+    },
+    "elevation": [
+      { "name": "elev-1", "offsetY": 1, "blur": 2, "opacity": 0.08 },
+      { "name": "elev-2", "offsetY": 2, "blur": 6, "opacity": 0.12 },
+      { "name": "elev-3", "offsetY": 6, "blur": 16, "opacity": 0.18 },
+      { "name": "elev-4", "offsetY": 14, "blur": 30, "opacity": 0.25 }
+    ],
+    "stroke": [
+      { "name": "hairline", "width": 0.5 },
+      { "name": "regular", "width": 1 },
+      { "name": "thick", "width": 2 }
+    ],
+    "motion": {
+      "durations": [
+        { "name": "quick", "milliseconds": 160 },
+        { "name": "standard", "milliseconds": 240 },
+        { "name": "slow", "milliseconds": 380 }
+      ],
+      "curves": [
+        { "name": "standard", "x1": 0.33, "y1": 0.01, "x2": 0.16, "y2": 1 },
+        { "name": "decelerate", "x1": 0,    "y1": 0,    "x2": 0.2,  "y2": 1 }
+      ]
+    }
+  },
+  "semantic": {
+    "color": [
+      { "name": "background.primary",      "light": "{primitives.color.white}",    "dark": "{primitives.color.gray-900}" },
+      { "name": "background.secondary",    "light": "{primitives.color.gray-50}",  "dark": "{primitives.color.gray-700}" },
+      { "name": "background.tertiary",     "light": "{primitives.color.gray-100}", "dark": "{primitives.color.gray-700}" },
+      { "name": "text.primary",            "light": "{primitives.color.gray-900}", "dark": "{primitives.color.white}" },
+      { "name": "text.secondary",          "light": "{primitives.color.gray-700}", "dark": "{primitives.color.gray-200}" },
+      { "name": "text.tertiary",           "light": "{primitives.color.gray-500}", "dark": "{primitives.color.gray-500}" },
+      { "name": "text.inverse",            "light": "{primitives.color.white}",    "dark": "{primitives.color.gray-900}" },
+      { "name": "text.error",              "light": "{primitives.color.red-500}",  "dark": "{primitives.color.red-500}" },
+      { "name": "border.subtle",           "light": "{primitives.color.gray-200}", "dark": "{primitives.color.gray-700}" },
+      { "name": "action.primary.bg",       "light": "{primitives.color.blue-500}", "dark": "{primitives.color.blue-500}" },
+      { "name": "action.primary.bg-pressed","light": "{primitives.color.blue-600}","dark": "{primitives.color.blue-600}" },
+      { "name": "action.primary.label",    "light": "{primitives.color.white}",    "dark": "{primitives.color.white}" },
+      { "name": "status.info.bg",          "light": "{primitives.color.blue-100}", "dark": "{primitives.color.blue-500}" },
+      { "name": "status.success",          "light": "{primitives.color.green-500}","dark": "{primitives.color.green-500}" },
+      { "name": "status.warning",          "light": "{primitives.color.amber-500}","dark": "{primitives.color.amber-500}" },
+      { "name": "status.error",            "light": "{primitives.color.red-500}",  "dark": "{primitives.color.red-500}" }
+    ],
+    "type": [
+      {
+        "name": "title-large",
+        "fontFamily": "{primitives.typography.fontFamilies.base}",
+        "fontSize":   "{primitives.typography.fontSizes.xxl}",
+        "fontWeight": "{primitives.typography.fontWeights.bold}",
+        "lineHeight": "{primitives.typography.lineHeights.tight}"
+      },
+      {
+        "name": "title-medium",
+        "fontFamily": "{primitives.typography.fontFamilies.base}",
+        "fontSize":   "{primitives.typography.fontSizes.xl}",
+        "fontWeight": "{primitives.typography.fontWeights.semibold}",
+        "lineHeight": "{primitives.typography.lineHeights.tight}"
+      },
+      {
+        "name": "body",
+        "fontFamily": "{primitives.typography.fontFamilies.base}",
+        "fontSize":   "{primitives.typography.fontSizes.md}",
+        "fontWeight": "{primitives.typography.fontWeights.regular}",
+        "lineHeight": "{primitives.typography.lineHeights.normal}"
+      },
+      {
+        "name": "caption",
+        "fontFamily": "{primitives.typography.fontFamilies.base}",
+        "fontSize":   "{primitives.typography.fontSizes.sm}",
+        "fontWeight": "{primitives.typography.fontWeights.regular}",
+        "lineHeight": "{primitives.typography.lineHeights.normal}"
+      }
+    ],
+    "spacing": [
+      { "name": "zero",           "reference": "{primitives.spacing.sp-0}" },
+      { "name": "compact",        "reference": "{primitives.spacing.sp-1}" },
+      { "name": "tight",          "reference": "{primitives.spacing.sp-2}" },
+      { "name": "item-gap",       "reference": "{primitives.spacing.sp-3}" },
+      { "name": "screen-padding", "reference": "{primitives.spacing.sp-4}" },
+      { "name": "card-padding",   "reference": "{primitives.spacing.sp-5}" },
+      { "name": "section-gap",    "reference": "{primitives.spacing.sp-6}" },
+      { "name": "stack-gap",      "reference": "{primitives.spacing.sp-8}" }
+    ],
+    "radius": [
+      { "name": "chip",   "reference": "{primitives.radius.sm}" },
+      { "name": "button", "reference": "{primitives.radius.md}" },
+      { "name": "card",   "reference": "{primitives.radius.lg}" },
+      { "name": "modal",  "reference": "{primitives.radius.xl}" }
+    ]
+  },
+  "hierarchy": {
+    "screenStructure": ["topBar", "primaryContent", "secondaryContent", "persistentAction"],
+    "maxPrimaryActionsPerArea": 1,
+    "rules": [
+      { "id": "11111111-1111-1111-1111-111111111111", "kind": "text",     "text": "Only one title-large per screen." },
+      { "id": "22222222-2222-2222-2222-222222222222", "kind": "text",     "text": "title-medium introduces a section." },
+      { "id": "33333333-3333-3333-3333-333333333333", "kind": "do",       "text": "Use weight before color for text hierarchy." },
+      { "id": "44444444-4444-4444-4444-444444444444", "kind": "dont",     "text": "Combine large size, bold weight, and accent color unless it is the primary focal element." },
+      { "id": "55555555-5555-5555-5555-555555555555", "kind": "action",   "text": "Destructive actions require explicit confirmation." },
+      { "id": "66666666-6666-6666-6666-666666666666", "kind": "emphasis", "text": "Use color emphasis only for interactive or status meaning." }
+    ],
+    "emphasisScale": [
+      { "level": 1, "label": "background or metadata" },
+      { "level": 2, "label": "supporting content" },
+      { "level": 3, "label": "normal body content" },
+      { "level": 4, "label": "section headers" },
+      { "level": 5, "label": "primary focal content" }
+    ],
+    "typeEmphasis": [
+      { "typeStyle": "{semantic.type.title-large}",  "level": 5 },
+      { "typeStyle": "{semantic.type.title-medium}", "level": 4 },
+      { "typeStyle": "{semantic.type.body}",        "level": 3 },
+      { "typeStyle": "{semantic.type.caption}",     "level": 2 }
+    ]
+  },
+  "components": {
+    "button": {
+      "variants": {
+        "primary": {
+          "background": "{semantic.color.action.primary.bg}",
+          "label":      "{semantic.color.action.primary.label}",
+          "border":     null,
+          "radius":     "{semantic.radius.button}"
+        },
+        "secondary": {
+          "background": "{semantic.color.background.primary}",
+          "label":      "{semantic.color.text.primary}",
+          "border":     "{semantic.color.border.subtle}",
+          "radius":     "{semantic.radius.button}"
+        },
+        "tertiary": {
+          "background": "{semantic.color.background.primary}",
+          "label":      "{semantic.color.action.primary.bg}",
+          "border":     null,
+          "radius":     "{semantic.radius.button}"
+        }
+      },
+      "sizes": {
+        "small":  { "heightPoints": 28, "horizontalPadding": "{semantic.spacing.item-gap}",       "labelStyle": "{semantic.type.caption}" },
+        "medium": { "heightPoints": 36, "horizontalPadding": "{semantic.spacing.screen-padding}", "labelStyle": "{semantic.type.body}" },
+        "large":  { "heightPoints": 50, "horizontalPadding": "{semantic.spacing.section-gap}",    "labelStyle": "{semantic.type.body}" }
+      },
+      "states": {
+        "pressed":  { "background": "{semantic.color.action.primary.bg-pressed}", "label": null, "opacity": null, "focusRing": null },
+        "disabled": { "background": null, "label": null, "opacity": 0.4,  "focusRing": null },
+        "focus":    { "background": null, "label": null, "opacity": null, "focusRing": "{semantic.color.action.primary.bg}" }
+      },
+      "rules": [
+        { "id": "b1000000-0000-0000-0000-000000000001", "kind": "do",   "text": "Label should be 1 to 3 words in sentence case." },
+        { "id": "b1000000-0000-0000-0000-000000000002", "kind": "do",   "text": "Primary buttons appear once per action group." },
+        { "id": "b1000000-0000-0000-0000-000000000003", "kind": "dont", "text": "Place two primary buttons side by side." }
+      ]
+    },
+    "card": {
+      "container": {
+        "background":  "{semantic.color.background.primary}",
+        "radius":      "{semantic.radius.card}",
+        "padding":     "{semantic.spacing.screen-padding}",
+        "borderColor": "{semantic.color.border.subtle}"
+      },
+      "allowedSlots": ["eyebrow", "title", "body", "media", "footerAction"],
+      "rules": [
+        { "id": "ca000000-0000-0000-0000-000000000001", "kind": "do",   "text": "Title is required; body is optional." },
+        { "id": "ca000000-0000-0000-0000-000000000002", "kind": "dont", "text": "Use a card as the main CTA unless footerAction is primary." }
+      ]
+    },
+    "textField": {
+      "background":       "{semantic.color.background.secondary}",
+      "labelColor":       "{semantic.color.text.secondary}",
+      "placeholderColor": "{semantic.color.text.tertiary}",
+      "borderColor":      "{semantic.color.border.subtle}",
+      "errorColor":       "{semantic.color.status.error}",
+      "radius":           "{semantic.radius.button}",
+      "sizes": {
+        "medium": { "heightPoints": 36, "horizontalPadding": "{semantic.spacing.item-gap}",       "labelStyle": "{semantic.type.body}" },
+        "large":  { "heightPoints": 50, "horizontalPadding": "{semantic.spacing.screen-padding}", "labelStyle": "{semantic.type.body}" }
+      },
+      "states": {
+        "focused":  { "borderColor": "{semantic.color.action.primary.bg}", "background": null, "opacity": null },
+        "disabled": { "borderColor": null, "background": null, "opacity": 0.4 },
+        "error":    { "borderColor": "{semantic.color.status.error}", "background": null, "opacity": null }
+      },
+      "rules": [
+        { "id": "cf000000-0000-0000-0000-000000000001", "kind": "do", "text": "Always show a visible label; placeholder is not enough." }
+      ]
+    },
+    "listItem": {
+      "background":       "{semantic.color.background.primary}",
+      "titleStyle":       "{semantic.type.body}",
+      "subtitleStyle":    "{semantic.type.caption}",
+      "leadingIconColor": "{semantic.color.text.secondary}",
+      "trailingColor":    "{semantic.color.text.tertiary}",
+      "separatorColor":   "{semantic.color.border.subtle}",
+      "rowHeightPoints":  44,
+      "allowedSlots":     ["leading", "title", "subtitle", "trailing", "accessory"],
+      "rules": [
+        { "id": "d1000000-0000-0000-0000-000000000001", "kind": "do", "text": "Minimum row height of 44 points for interactive rows." }
+      ]
+    },
+    "navBar": {
+      "background":          "{semantic.color.background.primary}",
+      "titleStyle":          "{semantic.type.title-medium}",
+      "largeTitleStyle":     "{semantic.type.title-large}",
+      "leadingActionColor":  "{semantic.color.action.primary.bg}",
+      "trailingActionColor": "{semantic.color.action.primary.bg}",
+      "supportsLargeTitle":  true,
+      "rules": [
+        { "id": "d2000000-0000-0000-0000-000000000001", "kind": "text", "text": "Use a single trailing action; escalate to an overflow menu if more are needed." }
+      ]
+    },
+    "tabBar": {
+      "background":          "{semantic.color.background.primary}",
+      "itemSelectedColor":   "{semantic.color.action.primary.bg}",
+      "itemUnselectedColor": "{semantic.color.text.tertiary}",
+      "labelStyle":          "{semantic.type.caption}",
+      "rules": [
+        { "id": "d3000000-0000-0000-0000-000000000001", "kind": "do", "text": "Three to five tabs; labels always visible." }
+      ]
+    },
+    "toolbar": {
+      "background":     "{semantic.color.background.primary}",
+      "actionColor":    "{semantic.color.action.primary.bg}",
+      "separatorColor": "{semantic.color.border.subtle}",
+      "rules": [
+        { "id": "d4000000-0000-0000-0000-000000000001", "kind": "text", "text": "Group related actions with small gaps; separate unrelated groups with a divider." }
+      ]
+    },
+    "segmentedControl": {
+      "trackBackground":    "{semantic.color.background.secondary}",
+      "selectedBackground": "{semantic.color.background.primary}",
+      "labelColor":         "{semantic.color.text.secondary}",
+      "selectedLabelColor": "{semantic.color.text.primary}",
+      "radius":             "{semantic.radius.button}",
+      "rules": [
+        { "id": "d5000000-0000-0000-0000-000000000001", "kind": "do", "text": "Use two to four segments with short, mutually exclusive labels." }
+      ]
+    },
+    "toggle": {
+      "trackOn":   "{semantic.color.status.success}",
+      "trackOff":  "{semantic.color.border.subtle}",
+      "thumbColor":"{semantic.color.background.primary}",
+      "rules": [
+        { "id": "d6000000-0000-0000-0000-000000000001", "kind": "do", "text": "Use a toggle only for binary, immediate-effect settings." }
+      ]
+    },
+    "alert": {
+      "surface":                 "{semantic.color.background.primary}",
+      "titleStyle":              "{semantic.type.title-medium}",
+      "bodyStyle":               "{semantic.type.body}",
+      "actionColor":             "{semantic.color.action.primary.bg}",
+      "destructiveActionColor":  "{semantic.color.status.error}",
+      "radius":                  "{semantic.radius.card}",
+      "rules": [
+        { "id": "d7000000-0000-0000-0000-000000000001", "kind": "do", "text": "Title states the consequence; body explains why." }
+      ]
+    },
+    "toastBanner": {
+      "variants": {
+        "info":    { "background": "{semantic.color.background.secondary}", "label": "{semantic.color.text.primary}",   "iconColor": "{semantic.color.action.primary.bg}" },
+        "success": { "background": "{semantic.color.status.success}",       "label": "{semantic.color.text.inverse}",   "iconColor": "{semantic.color.text.inverse}" },
+        "warning": { "background": "{semantic.color.status.warning}",       "label": "{semantic.color.text.inverse}",   "iconColor": "{semantic.color.text.inverse}" },
+        "error":   { "background": "{semantic.color.status.error}",         "label": "{semantic.color.text.inverse}",   "iconColor": "{semantic.color.text.inverse}" }
+      },
+      "radius": "{semantic.radius.button}",
+      "rules": [
+        { "id": "d8000000-0000-0000-0000-000000000001", "kind": "do", "text": "Auto-dismiss non-destructive toasts after 4 seconds." }
+      ]
+    },
+    "badgeTag": {
+      "sizes": {
+        "small":  { "heightPoints": 18, "horizontalPadding": "{semantic.spacing.item-gap}", "labelStyle": "{semantic.type.caption}" },
+        "medium": { "heightPoints": 22, "horizontalPadding": "{semantic.spacing.item-gap}", "labelStyle": "{semantic.type.caption}" }
+      },
+      "variants": {
+        "neutral": { "background": "{semantic.color.background.secondary}", "label": "{semantic.color.text.secondary}" },
+        "info":    { "background": "{semantic.color.action.primary.bg}",    "label": "{semantic.color.text.inverse}" },
+        "success": { "background": "{semantic.color.status.success}",       "label": "{semantic.color.text.inverse}" },
+        "warning": { "background": "{semantic.color.status.warning}",       "label": "{semantic.color.text.inverse}" },
+        "error":   { "background": "{semantic.color.status.error}",         "label": "{semantic.color.text.inverse}" }
+      },
+      "radius": "{semantic.radius.button}",
+      "rules": [
+        { "id": "d9000000-0000-0000-0000-000000000001", "kind": "do", "text": "Use status colors only when the badge's meaning is status." }
+      ]
+    }
+  },
+  "accessibility": {
+    "minTapTargetPoints": 44,
+    "minContrast": "WCAG AA",
+    "dynamicTypeSupport": true,
+    "notes": [
+      "All interactive elements expose accessibility labels.",
+      "Semantic status colors are paired with icons or text, never color alone."
+    ]
+  },
+  "llmContract": {
+    "rolePrompt": "You are designing iOS screens using the attached design system. Treat it as a strict API.",
+    "extraHardRules": [
+      "Prefer iOS-native layout patterns over web idioms.",
+      "Do not invent colors, spacing values, or type styles."
+    ],
+    "notes": "Return screen structure, component list, token assignments, accessibility notes, and SwiftUI pseudocode."
+  },
+  "examples": {
+    "items": [
+      {
+        "id": "ee000000-0000-0000-0000-000000000001",
+        "kind": "good",
+        "yaml": "name: Payment Details\nhierarchy:\n  primaryFocus: amount_due\n  secondaryFocus: due_date\nstructure:\n  - topBar\n  - summaryCard\n  - primaryAction\n",
+        "caption": "Clear hierarchy; one primary action."
+      }
+    ]
+  },
+  "lastExportBookmarkID": null
+}

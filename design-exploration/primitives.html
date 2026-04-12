@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Tokenforge — Primitives</title>
+<link rel="stylesheet" href="tokenforge.css" />
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+<script src="theme.js" defer></script>
+</head>
+<body>
+<div class="desktop">
+  <div class="window">
+
+    <!-- ── Chrome ─────────────────────────────────────────── -->
+    <header class="chrome">
+      <div class="chrome-left">
+        <div class="traffic-lights" aria-hidden="true">
+          <span class="tl close"></span>
+          <span class="tl min"></span>
+          <span class="tl max"></span>
+        </div>
+      </div>
+      <div class="chrome-title">
+        <span class="doc-name">
+          <i data-lucide="hexagon" style="width:13px;height:13px;color:var(--text-secondary)"></i>
+          Acme Design System
+          <span class="edited-dot"></span>
+        </span>
+      </div>
+      <div class="chrome-right">
+        <button class="chip" title="2 problems">
+          <span class="dot err"></span>
+          <span class="dot warn"></span>
+          2
+        </button>
+        <div class="seg" role="group" aria-label="Theme">
+          <button data-theme-btn="light" aria-pressed="true" title="Light"><i data-lucide="sun"></i></button>
+          <button data-theme-btn="dark" aria-pressed="false" title="Dark"><i data-lucide="moon"></i></button>
+        </div>
+        <button class="icon-btn" title="Toggle Inspector"><i data-lucide="panel-right"></i></button>
+      </div>
+    </header>
+
+    <!-- ── Sidebar ────────────────────────────────────────── -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="doc-pill">
+          <div class="glyph"><i data-lucide="hexagon"></i></div>
+          <div class="meta">
+            <div class="name">Acme Design System</div>
+            <div class="sub">schemaVersion 1 · v0.4</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-section-label">Document</div>
+        <ul class="sidebar-list">
+          <li class="sidebar-item active"><a href="primitives.html"><i data-lucide="layers"></i>Primitives<span class="count">68</span></a></li>
+          <li class="sidebar-item"><a href="#"><i data-lucide="link-2"></i>Semantic<span class="count">42</span></a></li>
+          <li class="sidebar-item"><a href="#"><i data-lucide="list-tree"></i>Hierarchy<span class="count">14</span></a></li>
+          <li class="sidebar-item"><a href="components.html"><i data-lucide="component"></i>Components<span class="count">12</span></a></li>
+          <li class="sidebar-item"><a href="preview.html"><i data-lucide="smartphone"></i>Preview</a></li>
+          <li class="sidebar-item"><a href="#"><i data-lucide="scroll-text"></i>Contract &amp; Export</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-section-label">Assets</div>
+        <ul class="sidebar-list">
+          <li class="sidebar-item"><a href="#"><i data-lucide="type"></i>Fonts<span class="count">3</span></a></li>
+          <li class="sidebar-item"><a href="#"><i data-lucide="shapes"></i>Icons<span class="count">27</span></a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-spacer"></div>
+      <div class="sidebar-footer">
+        <div class="avatar">MJ</div>
+        <span>Martin Johannesson</span>
+      </div>
+    </aside>
+
+    <!-- ── Main ───────────────────────────────────────────── -->
+    <main class="main">
+      <div class="pane-header">
+        <div>
+          <h1 class="pane-title">Primitives</h1>
+          <div class="pane-subtitle">Raw values — no product meaning yet. Reference these from the Semantic layer.</div>
+        </div>
+        <div class="pane-header-actions">
+          <button class="chip"><i data-lucide="arrow-down-up" style="width:12px;height:12px"></i>Sort</button>
+          <button class="chip" style="background:var(--accent);color:white;box-shadow:none">
+            <i data-lucide="plus" style="width:12px;height:12px"></i>Add primitive
+          </button>
+        </div>
+      </div>
+
+      <!-- Color -->
+      <section class="section">
+        <div class="section-head">
+          <div class="section-title">Color</div>
+          <div class="section-aside">23 values · 1 warning</div>
+        </div>
+
+        <div class="family">
+          <div class="family-label">Grayscale</div>
+          <div class="swatch-grid">
+            <div class="swatch"><div class="well" style="background:#ffffff"></div><div class="meta"><span class="name">white</span><span class="hex">#FFFFFF</span></div></div>
+            <div class="swatch"><div class="well" style="background:#f9fafb"></div><div class="meta"><span class="name">gray-50</span><span class="hex">#F9FAFB</span></div></div>
+            <div class="swatch"><div class="well" style="background:#f3f4f6"></div><div class="meta"><span class="name">gray-100</span><span class="hex">#F3F4F6</span></div></div>
+            <div class="swatch"><div class="well" style="background:#e5e7eb"></div><div class="meta"><span class="name">gray-200</span><span class="hex">#E5E7EB</span></div></div>
+            <div class="swatch"><div class="well" style="background:#d1d5db"></div><div class="meta"><span class="name">gray-300</span><span class="hex">#D1D5DB</span></div></div>
+            <div class="swatch"><div class="well" style="background:#9ca3af"></div><div class="meta"><span class="name">gray-400</span><span class="hex">#9CA3AF</span></div></div>
+            <div class="swatch"><div class="well" style="background:#6b7280"></div><div class="meta"><span class="name">gray-500</span><span class="hex">#6B7280</span></div></div>
+            <div class="swatch"><div class="well" style="background:#4b5563"></div><div class="meta"><span class="name">gray-600</span><span class="hex">#4B5563</span></div></div>
+            <div class="swatch"><div class="well" style="background:#374151"></div><div class="meta"><span class="name">gray-700</span><span class="hex">#374151</span></div></div>
+            <div class="swatch"><div class="well" style="background:#1f2937"></div><div class="meta"><span class="name">gray-800</span><span class="hex">#1F2937</span></div></div>
+            <div class="swatch"><div class="well" style="background:#111827"></div><div class="meta"><span class="name">gray-900</span><span class="hex">#111827</span></div></div>
+            <div class="swatch"><div class="well" style="background:#000000"></div><div class="meta"><span class="name">black</span><span class="hex">#000000</span></div></div>
+          </div>
+        </div>
+
+        <div class="family">
+          <div class="family-label">Brand</div>
+          <div class="swatch-grid">
+            <div class="swatch"><div class="well" style="background:#e0ecff"></div><div class="meta"><span class="name">blue-100</span><span class="hex">#E0ECFF</span></div></div>
+            <div class="swatch"><div class="well" style="background:#8bb6ff"></div><div class="meta"><span class="name">blue-300</span><span class="hex">#8BB6FF</span></div></div>
+            <div class="swatch"><div class="well" style="background:#2f6bff"></div><div class="meta"><span class="name">blue-500</span><span class="hex">#2F6BFF</span></div></div>
+            <div class="swatch"><div class="well" style="background:#1e56e6"></div><div class="meta"><span class="name">blue-600</span><span class="hex">#1E56E6</span></div></div>
+            <div class="swatch"><div class="well" style="background:#10339c"></div><div class="meta"><span class="name">blue-800</span><span class="hex">#10339C</span></div></div>
+          </div>
+        </div>
+
+        <div class="family">
+          <div class="family-label">Status</div>
+          <div class="swatch-grid">
+            <div class="swatch"><div class="well" style="background:#10b981"></div><div class="meta"><span class="name">green-500</span><span class="hex">#10B981</span></div></div>
+            <div class="swatch"><div class="well" style="background:#f59e0b"></div><div class="meta"><span class="name">amber-500</span><span class="hex">#F59E0B</span></div></div>
+            <div class="swatch warn" title="Name not in kebab-case">
+              <span class="warn-badge">!</span>
+              <div class="well" style="background:#ef4444"></div>
+              <div class="meta"><span class="name">red500</span><span class="hex">#EF4444</span></div>
+            </div>
+            <div class="swatch"><div class="well" style="background:#b91c1c"></div><div class="meta"><span class="name">red-700</span><span class="hex">#B91C1C</span></div></div>
+            <div class="swatch"><div class="well" style="background:#8b5cf6"></div><div class="meta"><span class="name">violet-500</span><span class="hex">#8B5CF6</span></div></div>
+            <div class="swatch"><div class="well" style="background:#ec4899"></div><div class="meta"><span class="name">pink-500</span><span class="hex">#EC4899</span></div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Spacing -->
+      <section class="section">
+        <div class="section-head">
+          <div class="section-title">Spacing</div>
+          <div class="section-aside">8 values · base 4</div>
+        </div>
+        <div class="ladder">
+          <div class="rung"><span class="key">sp-0</span><div class="bar-track"><span class="bar" style="width:0"></span></div><span class="px">0 pt</span></div>
+          <div class="rung"><span class="key">sp-1</span><div class="bar-track"><span class="bar" style="width:4%"></span></div><span class="px">4 pt</span></div>
+          <div class="rung"><span class="key">sp-2</span><div class="bar-track"><span class="bar" style="width:8%"></span></div><span class="px">8 pt</span></div>
+          <div class="rung"><span class="key">sp-3</span><div class="bar-track"><span class="bar" style="width:12%"></span></div><span class="px">12 pt</span></div>
+          <div class="rung"><span class="key">sp-4</span><div class="bar-track"><span class="bar" style="width:16%"></span></div><span class="px">16 pt</span></div>
+          <div class="rung"><span class="key">sp-5</span><div class="bar-track"><span class="bar" style="width:20%"></span></div><span class="px">20 pt</span></div>
+          <div class="rung"><span class="key">sp-6</span><div class="bar-track"><span class="bar" style="width:24%"></span></div><span class="px">24 pt</span></div>
+          <div class="rung"><span class="key">sp-8</span><div class="bar-track"><span class="bar" style="width:32%"></span></div><span class="px">32 pt</span></div>
+        </div>
+      </section>
+
+      <!-- Radius -->
+      <section class="section">
+        <div class="section-head">
+          <div class="section-title">Radius</div>
+          <div class="section-aside">4 values</div>
+        </div>
+        <div class="radius-grid">
+          <div class="radius-card">
+            <div class="radius-shape" style="border-radius:8px"></div>
+            <div class="radius-label"><span class="k">sm</span><span class="v">8 pt</span></div>
+          </div>
+          <div class="radius-card">
+            <div class="radius-shape" style="border-radius:12px"></div>
+            <div class="radius-label"><span class="k">md</span><span class="v">12 pt</span></div>
+          </div>
+          <div class="radius-card">
+            <div class="radius-shape" style="border-radius:16px"></div>
+            <div class="radius-label"><span class="k">lg</span><span class="v">16 pt</span></div>
+          </div>
+          <div class="radius-card">
+            <div class="radius-shape" style="border-radius:24px"></div>
+            <div class="radius-label"><span class="k">xl</span><span class="v">24 pt</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Typography -->
+      <section class="section">
+        <div class="section-head">
+          <div class="section-title">Typography</div>
+          <div class="section-aside">SF Pro · 6 sizes · 4 weights</div>
+        </div>
+        <div class="type-list">
+          <div class="type-row">
+            <span class="k">displayLg</span>
+            <span class="sample" style="font-size:30px;font-weight:700;letter-spacing:-0.02em;line-height:1.1">The quick brown fox</span>
+            <span class="spec">32 / 700 / 1.10</span>
+          </div>
+          <div class="type-row">
+            <span class="k">titleLg</span>
+            <span class="sample" style="font-size:22px;font-weight:700;letter-spacing:-0.01em">The quick brown fox</span>
+            <span class="spec">24 / 700 / 1.20</span>
+          </div>
+          <div class="type-row">
+            <span class="k">titleMd</span>
+            <span class="sample" style="font-size:18px;font-weight:600">The quick brown fox</span>
+            <span class="spec">20 / 600 / 1.25</span>
+          </div>
+          <div class="type-row">
+            <span class="k">body</span>
+            <span class="sample" style="font-size:15px;font-weight:400">The quick brown fox jumps over</span>
+            <span class="spec">16 / 400 / 1.40</span>
+          </div>
+          <div class="type-row">
+            <span class="k">bodySm</span>
+            <span class="sample" style="font-size:13px;font-weight:400">The quick brown fox jumps over</span>
+            <span class="spec">14 / 400 / 1.45</span>
+          </div>
+          <div class="type-row">
+            <span class="k">caption</span>
+            <span class="sample" style="font-size:11px;font-weight:500;color:var(--text-secondary)">The quick brown fox</span>
+            <span class="spec">12 / 500 / 1.35</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Elevation -->
+      <section class="section">
+        <div class="section-head">
+          <div class="section-title">Elevation</div>
+          <div class="section-aside">4 levels</div>
+        </div>
+        <div class="stub-grid">
+          <div class="stub elev-1"><div class="k">elev-1</div><div class="elev-demo"></div><div class="v">y 1 · blur 2 · 8%</div></div>
+          <div class="stub elev-2"><div class="k">elev-2</div><div class="elev-demo"></div><div class="v">y 2 · blur 6 · 12%</div></div>
+          <div class="stub elev-3"><div class="k">elev-3</div><div class="elev-demo"></div><div class="v">y 6 · blur 16 · 18%</div></div>
+          <div class="stub elev-4"><div class="k">elev-4</div><div class="elev-demo"></div><div class="v">y 14 · blur 30 · 25%</div></div>
+        </div>
+      </section>
+
+      <!-- Stroke -->
+      <section class="section">
+        <div class="section-head">
+          <div class="section-title">Stroke</div>
+          <div class="section-aside">3 widths</div>
+        </div>
+        <div class="stub-grid">
+          <div class="stub"><div class="k">hairline</div><div class="stroke-demo"><div class="line" style="height:0.5px"></div></div><div class="v">0.5 pt</div></div>
+          <div class="stub"><div class="k">regular</div><div class="stroke-demo"><div class="line" style="height:1px"></div></div><div class="v">1.0 pt</div></div>
+          <div class="stub"><div class="k">thick</div><div class="stroke-demo"><div class="line" style="height:2px"></div></div><div class="v">2.0 pt</div></div>
+        </div>
+      </section>
+
+      <!-- Motion -->
+      <section class="section" style="padding-bottom:32px">
+        <div class="section-head">
+          <div class="section-title">Motion</div>
+          <div class="section-aside">3 durations · 3 curves</div>
+        </div>
+        <div class="stub-grid">
+          <div class="stub"><div class="k">quick</div><div class="motion-demo"></div><div class="v">240ms · standard</div></div>
+          <div class="stub motion-slow"><div class="k">slow</div><div class="motion-demo"></div><div class="v">380ms · decelerate</div></div>
+          <div class="stub motion-spring"><div class="k">spring</div><div class="motion-demo"></div><div class="v">160ms · overshoot</div></div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ── Inspector (hidden on this page via display:none) ── -->
+    <aside class="inspector" style="display:none"></aside>
+
+  </div>
+</div>
+
+<script>
+  window.addEventListener("load", () => { if (window.lucide) lucide.createIcons(); });
+</script>
+</body>
+</html>

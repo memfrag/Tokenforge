@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Tokenforge — Components</title>
+<link rel="stylesheet" href="tokenforge.css" />
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+<script src="theme.js" defer></script>
+</head>
+<body>
+<div class="desktop">
+  <div class="window">
+
+    <header class="chrome">
+      <div class="chrome-left">
+        <div class="traffic-lights" aria-hidden="true">
+          <span class="tl close"></span><span class="tl min"></span><span class="tl max"></span>
+        </div>
+      </div>
+      <div class="chrome-title">
+        <span class="doc-name">
+          <i data-lucide="hexagon" style="width:13px;height:13px;color:var(--text-secondary)"></i>
+          Acme Design System
+          <span class="edited-dot"></span>
+        </span>
+      </div>
+      <div class="chrome-right">
+        <button class="chip" title="2 problems"><span class="dot err"></span><span class="dot warn"></span>2</button>
+        <div class="seg" role="group" aria-label="Theme">
+          <button data-theme-btn="light" aria-pressed="true"><i data-lucide="sun"></i></button>
+          <button data-theme-btn="dark" aria-pressed="false"><i data-lucide="moon"></i></button>
+        </div>
+        <button class="icon-btn" title="Toggle Inspector"><i data-lucide="panel-right"></i></button>
+      </div>
+    </header>
+
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="doc-pill">
+          <div class="glyph"><i data-lucide="hexagon"></i></div>
+          <div class="meta">
+            <div class="name">Acme Design System</div>
+            <div class="sub">schemaVersion 1 · v0.4</div>
+          </div>
+        </div>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-label">Document</div>
+        <ul class="sidebar-list">
+          <li class="sidebar-item"><a href="primitives.html"><i data-lucide="layers"></i>Primitives<span class="count">68</span></a></li>
+          <li class="sidebar-item"><a href="#"><i data-lucide="link-2"></i>Semantic<span class="count">42</span></a></li>
+          <li class="sidebar-item"><a href="#"><i data-lucide="list-tree"></i>Hierarchy<span class="count">14</span></a></li>
+          <li class="sidebar-item active"><a href="components.html"><i data-lucide="component"></i>Components<span class="count">12</span></a></li>
+          <li class="sidebar-item"><a href="preview.html"><i data-lucide="smartphone"></i>Preview</a></li>
+          <li class="sidebar-item"><a href="#"><i data-lucide="scroll-text"></i>Contract &amp; Export</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-label">Assets</div>
+        <ul class="sidebar-list">
+          <li class="sidebar-item"><a href="#"><i data-lucide="type"></i>Fonts<span class="count">3</span></a></li>
+          <li class="sidebar-item"><a href="#"><i data-lucide="shapes"></i>Icons<span class="count">27</span></a></li>
+        </ul>
+      </div>
+      <div class="sidebar-spacer"></div>
+      <div class="sidebar-footer">
+        <div class="avatar">MJ</div>
+        <span>Martin Johannesson</span>
+      </div>
+    </aside>
+
+    <main class="main" style="overflow:hidden">
+      <div class="components-split" style="flex:1">
+
+        <!-- Component list -->
+        <div class="components-list">
+          <div class="list-label">Components</div>
+          <div class="comp-item active"><i data-lucide="square-mouse-pointer"></i>button<span class="num">3v</span></div>
+          <div class="comp-item"><i data-lucide="credit-card"></i>card<span class="num">1v</span></div>
+          <div class="comp-item"><i data-lucide="text-cursor-input"></i>textField<span class="num">2v</span></div>
+          <div class="comp-item"><i data-lucide="list"></i>listItem<span class="num">3v</span></div>
+          <div class="comp-item"><i data-lucide="panel-top"></i>navBar<span class="num">2v</span></div>
+          <div class="comp-item"><i data-lucide="panel-bottom"></i>tabBar<span class="num">1v</span></div>
+          <div class="comp-item"><i data-lucide="wrench"></i>toolbar<span class="num">2v</span></div>
+          <div class="comp-item"><i data-lucide="columns-2"></i>segmentedControl<span class="num">1v</span></div>
+          <div class="comp-item"><i data-lucide="toggle-right"></i>toggle<span class="num">1v</span></div>
+          <div class="comp-item"><i data-lucide="octagon-alert"></i>alert<span class="num">2v</span></div>
+          <div class="comp-item"><i data-lucide="message-square-warning"></i>toastBanner<span class="num">4v</span></div>
+          <div class="comp-item"><i data-lucide="tag"></i>badgeTag<span class="num">3v</span></div>
+        </div>
+
+        <!-- Detail -->
+        <div class="comp-detail">
+
+          <div class="pane-header" style="padding:0 0 16px;border-bottom:0.5px solid var(--separator);margin-bottom:20px">
+            <div>
+              <h1 class="pane-title">button</h1>
+              <div class="pane-subtitle">Primary interactive element. One primary visible per action group.</div>
+            </div>
+            <div class="pane-header-actions">
+              <button class="chip"><i data-lucide="copy" style="width:12px;height:12px"></i>Duplicate</button>
+              <button class="chip" style="background:var(--accent);color:white;box-shadow:none">
+                <i data-lucide="play" style="width:12px;height:12px"></i>Preview in sample
+              </button>
+            </div>
+          </div>
+
+          <!-- Variants -->
+          <div class="section-head" style="margin-bottom:10px">
+            <div class="section-title">Variants</div>
+            <div class="section-aside">3 defined</div>
+          </div>
+          <div class="variants-grid">
+            <div class="variant-card">
+              <div class="variant-head"><span class="name">primary</span><span class="tag">button.primary</span></div>
+              <div class="variant-preview"><button class="p-btn primary">Pay Now</button></div>
+              <div class="variant-fields">
+                <div class="vrow"><span class="l">background</span><span class="v"><span class="ref">action.primary.bg</span></span></div>
+                <div class="vrow"><span class="l">label</span><span class="v"><span class="ref">action.primary.label</span></span></div>
+                <div class="vrow"><span class="l">radius</span><span class="v"><span class="ref">radius.button</span></span></div>
+              </div>
+            </div>
+
+            <div class="variant-card">
+              <div class="variant-head"><span class="name">secondary</span><span class="tag">button.secondary</span></div>
+              <div class="variant-preview"><button class="p-btn secondary">Cancel</button></div>
+              <div class="variant-fields">
+                <div class="vrow"><span class="l">background</span><span class="v">transparent</span></div>
+                <div class="vrow"><span class="l">label</span><span class="v"><span class="ref">text.primary</span></span></div>
+                <div class="vrow"><span class="l">border</span><span class="v"><span class="ref">border.subtle</span></span></div>
+              </div>
+            </div>
+
+            <div class="variant-card">
+              <div class="variant-head"><span class="name">tertiary</span><span class="tag">button.tertiary</span></div>
+              <div class="variant-preview"><button class="p-btn tertiary">Learn More →</button></div>
+              <div class="variant-fields">
+                <div class="vrow"><span class="l">background</span><span class="v">transparent</span></div>
+                <div class="vrow"><span class="l">label</span><span class="v"><span class="ref">action.primary.bg</span></span></div>
+                <div class="vrow"><span class="l">radius</span><span class="v">0</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sizes -->
+          <div class="section-head" style="margin:24px 0 10px">
+            <div class="section-title">Sizes</div>
+            <div class="section-aside">3 defined</div>
+          </div>
+          <div class="sizes-row">
+            <div class="size-col"><span class="k">sm · 28 pt</span><button class="p-btn primary sm">Action</button></div>
+            <div class="size-col"><span class="k">md · 36 pt</span><button class="p-btn primary md">Action</button></div>
+            <div class="size-col"><span class="k">lg · 50 pt</span><button class="p-btn primary lg">Action</button></div>
+          </div>
+
+          <!-- States -->
+          <div class="section-head" style="margin:24px 0 10px">
+            <div class="section-title">States</div>
+            <div class="section-aside">4 defined</div>
+          </div>
+          <div class="states-row">
+            <div class="state-card"><span class="k">default</span><button class="p-btn primary">Pay Now</button></div>
+            <div class="state-card"><span class="k">pressed</span><button class="p-btn pressed">Pay Now</button></div>
+            <div class="state-card"><span class="k">disabled</span><button class="p-btn disabled">Pay Now</button></div>
+            <div class="state-card"><span class="k">focus</span><button class="p-btn focus">Pay Now</button></div>
+          </div>
+
+          <!-- Rules -->
+          <div class="section-head" style="margin:24px 0 10px">
+            <div class="section-title">Rules</div>
+            <div class="section-aside">5 rules · 2 kinds</div>
+          </div>
+          <div class="rules-list">
+            <div class="rule-row">
+              <span class="kind do">do</span>
+              <span>Label should be 1 to 3 words, sentence case.</span>
+              <span class="grip"><i data-lucide="grip-vertical"></i></span>
+            </div>
+            <div class="rule-row">
+              <span class="kind do">do</span>
+              <span>Use the primary variant once per action group.</span>
+              <span class="grip"><i data-lucide="grip-vertical"></i></span>
+            </div>
+            <div class="rule-row">
+              <span class="kind dont">don't</span>
+              <span>Place two primary buttons side by side.</span>
+              <span class="grip"><i data-lucide="grip-vertical"></i></span>
+            </div>
+            <div class="rule-row">
+              <span class="kind dont">don't</span>
+              <span>Use tertiary variant for destructive actions.</span>
+              <span class="grip"><i data-lucide="grip-vertical"></i></span>
+            </div>
+            <div class="rule-row">
+              <span class="kind action">action</span>
+              <span>Destructive actions require explicit confirmation via alert.</span>
+              <span class="grip"><i data-lucide="grip-vertical"></i></span>
+            </div>
+          </div>
+
+          <div style="height:28px"></div>
+        </div>
+      </div>
+    </main>
+
+    <!-- ── Inspector — Problems ─────────────────────────────── -->
+    <aside class="inspector">
+      <div class="insp-tabs" role="tablist">
+        <div class="insp-tab" role="tab">Info</div>
+        <div class="insp-tab" role="tab" aria-selected="true">Problems <span style="color:var(--text-tertiary);font-weight:500">· 2</span></div>
+        <div class="insp-tab" role="tab">History</div>
+      </div>
+
+      <div class="insp-section">
+        <div class="insp-section-title">Errors · 1</div>
+        <div class="problem err">
+          <div class="sev"><i data-lucide="x"></i></div>
+          <div class="body">
+            <div class="msg">Unresolved reference <code>semantic.color.status.error</code></div>
+            <div class="path">components · toastBanner › error › background</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="insp-section">
+        <div class="insp-section-title">Warnings · 1</div>
+        <div class="problem warn">
+          <div class="sev"><i data-lucide="triangle-alert"></i></div>
+          <div class="body">
+            <div class="msg">Unused primitive <code>color.gray-100</code></div>
+            <div class="path">primitives · color · grayscale</div>
+          </div>
+        </div>
+        <div class="problem warn">
+          <div class="sev"><i data-lucide="triangle-alert"></i></div>
+          <div class="body">
+            <div class="msg">Name <code>red500</code> not in kebab-case</div>
+            <div class="path">primitives · color · status</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="insp-section" style="border-bottom:0;color:var(--text-tertiary);font-size:11px;line-height:1.5">
+        Export blocks on any issue. Resolve all items above before running Export All.
+      </div>
+    </aside>
+
+  </div>
+</div>
+
+<script>
+  window.addEventListener("load", () => { if (window.lucide) lucide.createIcons(); });
+</script>
+</body>
+</html>

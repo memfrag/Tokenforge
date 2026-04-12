@@ -1,0 +1,31 @@
+{
+  "Text": {
+    "$type": "color",
+    "$value": {
+      "colorSpace": "srgb",
+      "components": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 1,
+      "hex": "#000000"
+    },
+    "$extensions": {
+      "com.figma.variableId": "VariableID:1:8",
+      "com.figma.scopes": [
+        "ALL_SCOPES"
+      ],
+      "com.figma.aliasData": {
+        "targetVariableId": "VariableID:6c9b28ed6baef4a5d329b309592ca8d0ca199cc0/-1:-1",
+        "targetVariableName": "Black",
+        "targetVariableSetId": "VariableCollectionId:f66dabf01d1439a54b6db07750771bf4656cf5b6/-1:-1",
+        "targetVariableSetName": "Primitives"
+      },
+      "com.figma.isOverride": true
+    }
+  },
+  "$extensions": {
+    "com.figma.modeName": "Light Mode"
+  }
+}

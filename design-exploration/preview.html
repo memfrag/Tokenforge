@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Tokenforge — Preview</title>
+<link rel="stylesheet" href="tokenforge.css" />
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+<script src="theme.js" defer></script>
+</head>
+<body>
+<div class="desktop">
+  <div class="window">
+
+    <header class="chrome">
+      <div class="chrome-left">
+        <div class="traffic-lights" aria-hidden="true">
+          <span class="tl close"></span><span class="tl min"></span><span class="tl max"></span>
+        </div>
+      </div>
+      <div class="chrome-title">
+        <span class="doc-name">
+          <i data-lucide="hexagon" style="width:13px;height:13px;color:var(--text-secondary)"></i>
+          Acme Design System
+          <span class="edited-dot"></span>
+        </span>
+      </div>
+      <div class="chrome-right">
+        <button class="chip" title="2 problems"><span class="dot err"></span><span class="dot warn"></span>2</button>
+        <div class="seg" role="group" aria-label="Theme">
+          <button data-theme-btn="light" aria-pressed="true"><i data-lucide="sun"></i></button>
+          <button data-theme-btn="dark" aria-pressed="false"><i data-lucide="moon"></i></button>
+        </div>
+        <button class="icon-btn" title="Toggle Inspector"><i data-lucide="panel-right"></i></button>
+      </div>
+    </header>
+
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="doc-pill">
+          <div class="glyph"><i data-lucide="hexagon"></i></div>
+          <div class="meta">
+            <div class="name">Acme Design System</div>
+            <div class="sub">schemaVersion 1 · v0.4</div>
+          </div>
+        </div>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-label">Document</div>
+        <ul class="sidebar-list">
+          <li class="sidebar-item"><a href="primitives.html"><i data-lucide="layers"></i>Primitives<span class="count">68</span></a></li>
+          <li class="sidebar-item"><a href="#"><i data-lucide="link-2"></i>Semantic<span class="count">42</span></a></li>
+          <li class="sidebar-item"><a href="#"><i data-lucide="list-tree"></i>Hierarchy<span class="count">14</span></a></li>
+          <li class="sidebar-item"><a href="components.html"><i data-lucide="component"></i>Components<span class="count">12</span></a></li>
+          <li class="sidebar-item active"><a href="preview.html"><i data-lucide="smartphone"></i>Preview</a></li>
+          <li class="sidebar-item"><a href="#"><i data-lucide="scroll-text"></i>Contract &amp; Export</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-label">Assets</div>
+        <ul class="sidebar-list">
+          <li class="sidebar-item"><a href="#"><i data-lucide="type"></i>Fonts<span class="count">3</span></a></li>
+          <li class="sidebar-item"><a href="#"><i data-lucide="shapes"></i>Icons<span class="count">27</span></a></li>
+        </ul>
+      </div>
+      <div class="sidebar-spacer"></div>
+      <div class="sidebar-footer">
+        <div class="avatar">MJ</div>
+        <span>Martin Johannesson</span>
+      </div>
+    </aside>
+
+    <main class="main" style="overflow:hidden">
+      <div class="preview-split" style="flex:1">
+
+        <!-- Sample list -->
+        <div class="preview-list">
+          <div class="list-label">Built-in samples</div>
+          <div class="sample-item active">
+            <div class="thumb"></div>
+            <div class="meta"><div class="name">Payment Details</div><div class="sub">Hero + card + action</div></div>
+          </div>
+          <div class="sample-item">
+            <div class="thumb"></div>
+            <div class="meta"><div class="name">List</div><div class="sub">listItem · navBar</div></div>
+          </div>
+          <div class="sample-item">
+            <div class="thumb"></div>
+            <div class="meta"><div class="name">Settings</div><div class="sub">form rows · toggles</div></div>
+          </div>
+          <div class="sample-item">
+            <div class="thumb"></div>
+            <div class="meta"><div class="name">Empty State</div><div class="sub">illustration + CTA</div></div>
+          </div>
+        </div>
+
+        <!-- Stage -->
+        <div class="preview-stage">
+          <div class="preview-controls">
+            <span class="control-label">Appearance</span>
+            <div class="seg" role="group">
+              <button data-ios-appearance="light" aria-pressed="true"><i data-lucide="sun"></i> Light</button>
+              <button data-ios-appearance="dark" aria-pressed="false"><i data-lucide="moon"></i> Dark</button>
+            </div>
+            <span class="control-label" style="margin-left:14px">State</span>
+            <select class="select">
+              <option>Default</option>
+              <option>Pressed</option>
+              <option>Disabled</option>
+            </select>
+            <label class="toggle" style="margin-left:14px">
+              <input type="checkbox" data-emphasis-toggle />
+              <span class="slot"></span>
+              Emphasis overlay
+            </label>
+          </div>
+
+          <!-- iPhone -->
+          <div class="iphone" data-ios-theme="light">
+            <div class="iphone-screen">
+              <div class="dynamic-island"></div>
+              <div class="ios-status">
+                <span>9:41</span>
+                <div class="right">
+                  <svg viewBox="0 0 17 11" fill="currentColor"><path d="M0 9h2v2H0zm3-2h2v4H3zm3-2h2v6H6zm3-2h2v8H9zm3-2h2v10h-2z"/></svg>
+                  <svg viewBox="0 0 17 11" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M1 6c4-5 11-5 15 0"/><path d="M4 8c2-3 7-3 9 0"/><circle cx="8.5" cy="9.5" r="0.8" fill="currentColor"/></svg>
+                  <div class="battery"></div>
+                </div>
+              </div>
+
+              <div class="ios-nav">
+                <div class="back">
+                  <svg width="11" height="18" viewBox="0 0 11 18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 2 2 9 9 16"/></svg>
+                  Back
+                </div>
+                <div class="title">Payment</div>
+                <div class="right ghost"></div>
+              </div>
+
+              <div class="ios-body">
+                <div class="ios-hero">
+                  <div class="label" data-e="5">Amount Due</div>
+                  <div class="amount" data-e="5">$2,450.00</div>
+                  <div class="due" data-e="4">Due March 15</div>
+                </div>
+
+                <div class="ios-card">
+                  <div class="ios-row">
+                    <div class="lead">
+                      <div class="icon"><i data-lucide="home"></i></div>
+                      <div>
+                        <div>Rent</div>
+                        <div class="sub">Monthly</div>
+                      </div>
+                    </div>
+                    <div class="amt" data-e="3">$1,800.00</div>
+                  </div>
+                  <div class="ios-row">
+                    <div class="lead">
+                      <div class="icon"><i data-lucide="zap"></i></div>
+                      <div>
+                        <div>Utilities</div>
+                        <div class="sub">Feb 14 – Mar 14</div>
+                      </div>
+                    </div>
+                    <div class="amt" data-e="3">$420.00</div>
+                  </div>
+                  <div class="ios-row">
+                    <div class="lead">
+                      <div class="icon"><i data-lucide="car-front"></i></div>
+                      <div>
+                        <div>Parking</div>
+                        <div class="sub">Residential permit</div>
+                      </div>
+                    </div>
+                    <div class="amt" data-e="3">$230.00</div>
+                  </div>
+                </div>
+
+                <div class="ios-btn" data-e="5">Pay Now</div>
+                <div class="ios-btn secondary">Schedule Payment</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <aside class="inspector" style="display:none"></aside>
+  </div>
+</div>
+
+<script>
+  window.addEventListener("load", () => { if (window.lucide) lucide.createIcons(); });
+</script>
+</body>
+</html>
