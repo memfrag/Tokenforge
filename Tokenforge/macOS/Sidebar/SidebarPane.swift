@@ -14,6 +14,11 @@ enum SidebarPane {
     case components
     case preview
     case contract
+
+    // MARK: Assets
+
+    case fonts
+    case icons
 }
 
 // MARK: - Protocol Conformances

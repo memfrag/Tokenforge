@@ -31,7 +31,7 @@ struct SpacingPrimitivesSection: View {
                         Capsule()
                             .fill(Color.accentColor.opacity(0.9))
                             .frame(
-                                width: CGFloat(primitive.points / maxPoints) * 260,
+                                width: primitive.points,
                                 height: 8
                             )
                         Spacer(minLength: 8)

@@ -25,12 +25,20 @@ enum FontRegistry {
 
     private static var registeredHashes: Set<Int> = []
     private static var registeredPostScriptNames: Set<String> = []
+    private static var filenameToPostScriptNames: [String: [String]] = [:]
     private static let logger = Logger(subsystem: "io.apparata.Tokenforge", category: "FontRegistry")
 
     /// The set of PostScript names currently known to the process. Grows
     /// as documents are opened; never shrinks for the lifetime of the app.
     static var postScriptNames: Set<String> {
         registeredPostScriptNames
+    }
+
+    /// Returns the PostScript names registered from `filename` so far.
+    /// Used by the Fonts pane to resolve `Font.custom(name:size:)` for a
+    /// live preview without re-parsing the font data on every render.
+    static func postScriptNames(forFilename filename: String) -> [String] {
+        filenameToPostScriptNames[filename] ?? []
     }
 
     /// Registers every font blob in `fontsByFilename`. Duplicates (by
@@ -71,6 +79,7 @@ enum FontRegistry {
             for psName in psNames {
                 registeredPostScriptNames.insert(psName)
             }
+            filenameToPostScriptNames[filename, default: []].append(contentsOf: psNames)
             newlyRegistered.append(contentsOf: psNames)
             logger.info("Registered \(psNames.count, privacy: .public) descriptor(s) from \(filename, privacy: .public).")
         }

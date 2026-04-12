@@ -25,10 +25,77 @@ nonisolated struct TokenforgeSpec: Codable, Equatable, Sendable {
     var llmContract: LLMContractOverrides
     var examples: ExtraExamples
 
+    /// Curated list of icon-name references (SF Symbols) the author has
+    /// chosen for this design system. Decoded with `decodeIfPresent` so
+    /// existing schema-v1 `.tokenforge` files (and `DefaultSpec.json`)
+    /// saved before this field existed still open cleanly.
+    var iconSet: IconSet = IconSet()
+
     /// Opaque UUID used to key a per-document export-folder security-scoped
     /// bookmark in `AppSettings`. Stored in `spec.json` so the mapping survives
     /// when the user renames or moves the bundle.
     var lastExportBookmarkID: UUID?
+
+    // Synthesized Codable does NOT use Swift property defaults during
+    // decoding — it always calls `decode(_:forKey:)` and throws on a
+    // missing key. To allow `iconSet` to be optional in old files we
+    // hand-roll the decoder, falling back to `decodeIfPresent` for that
+    // single key while leaving everything else unchanged.
+
+    private enum CodingKeys: String, CodingKey {
+        case schemaVersion
+        case meta
+        case primitives
+        case semantic
+        case hierarchy
+        case components
+        case accessibility
+        case llmContract
+        case examples
+        case iconSet
+        case lastExportBookmarkID
+    }
+
+    init(
+        schemaVersion: Int,
+        meta: SpecMeta,
+        primitives: Primitives,
+        semantic: SemanticTokens,
+        hierarchy: HierarchyRules,
+        components: ComponentSet,
+        accessibility: AccessibilityRules,
+        llmContract: LLMContractOverrides,
+        examples: ExtraExamples,
+        iconSet: IconSet = IconSet(),
+        lastExportBookmarkID: UUID? = nil
+    ) {
+        self.schemaVersion = schemaVersion
+        self.meta = meta
+        self.primitives = primitives
+        self.semantic = semantic
+        self.hierarchy = hierarchy
+        self.components = components
+        self.accessibility = accessibility
+        self.llmContract = llmContract
+        self.examples = examples
+        self.iconSet = iconSet
+        self.lastExportBookmarkID = lastExportBookmarkID
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.schemaVersion = try container.decode(Int.self, forKey: .schemaVersion)
+        self.meta = try container.decode(SpecMeta.self, forKey: .meta)
+        self.primitives = try container.decode(Primitives.self, forKey: .primitives)
+        self.semantic = try container.decode(SemanticTokens.self, forKey: .semantic)
+        self.hierarchy = try container.decode(HierarchyRules.self, forKey: .hierarchy)
+        self.components = try container.decode(ComponentSet.self, forKey: .components)
+        self.accessibility = try container.decode(AccessibilityRules.self, forKey: .accessibility)
+        self.llmContract = try container.decode(LLMContractOverrides.self, forKey: .llmContract)
+        self.examples = try container.decode(ExtraExamples.self, forKey: .examples)
+        self.iconSet = try container.decodeIfPresent(IconSet.self, forKey: .iconSet) ?? IconSet()
+        self.lastExportBookmarkID = try container.decodeIfPresent(UUID.self, forKey: .lastExportBookmarkID)
+    }
 }
 
 // MARK: - Errors

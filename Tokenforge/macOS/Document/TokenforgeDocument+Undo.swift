@@ -42,7 +42,7 @@ extension TokenforgeDocument {
         )
     }
 
-    /// Registers a recursive undo/redo pair.
+    /// Registers a recursive undo/redo pair for spec mutations.
     ///
     /// When invoked by the undo manager, the closure restores the old state and
     /// re-registers the mirror transition — which, because we're inside an undo,
@@ -62,6 +62,68 @@ extension TokenforgeDocument {
         undoManager.registerUndo(withTarget: self) { target in
             target.spec = oldState
             target.registerUndoTransition(
+                from: newState,
+                to: oldState,
+                actionName: actionName,
+                undoManager: undoManager
+            )
+        }
+    }
+
+    // MARK: - Asset editing
+
+    /// Mutable draft of the document's asset state. Used by `editAssets`
+    /// so the caller can add / delete / rename font and icon files in one
+    /// atomic closure and have the whole transition captured as a single
+    /// undo step.
+    struct AssetsDraft: Equatable {
+        var fontData: [String: Data]
+        var iconData: [String: Data]
+    }
+
+    /// Applies a mutation to the font + icon dictionaries and registers
+    /// one undo/redo pair. Parallel to `edit(...)` but scoped to asset
+    /// state so drops, deletes, and renames in the Fonts / Icons panes
+    /// become single undoable operations.
+    @MainActor
+    func editAssets(
+        actionName: String,
+        undoManager: UndoManager?,
+        mutate: (inout AssetsDraft) -> Void
+    ) {
+        let before = AssetsDraft(fontData: fontData, iconData: iconData)
+        var draft = before
+        mutate(&draft)
+        guard draft != before else {
+            return
+        }
+        fontData = draft.fontData
+        iconData = draft.iconData
+        registerAssetsUndoTransition(
+            from: before,
+            to: draft,
+            actionName: actionName,
+            undoManager: undoManager
+        )
+    }
+
+    /// Registers a recursive undo/redo pair for asset-state mutations.
+    /// Same recursive pattern as `registerUndoTransition`.
+    @MainActor
+    private func registerAssetsUndoTransition(
+        from oldState: AssetsDraft,
+        to newState: AssetsDraft,
+        actionName: String,
+        undoManager: UndoManager?
+    ) {
+        guard let undoManager else {
+            return
+        }
+        undoManager.setActionName(actionName)
+        undoManager.registerUndo(withTarget: self) { target in
+            target.fontData = oldState.fontData
+            target.iconData = oldState.iconData
+            target.registerAssetsUndoTransition(
                 from: newState,
                 to: oldState,
                 actionName: actionName,

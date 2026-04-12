@@ -43,6 +43,17 @@ struct Sidebar: View {
                         Label("Contract & Export", systemImage: "doc.text.below.ecg")
                     }
                 }
+
+                Section(header: Text("Assets")) {
+
+                    NavigationLink(value: SidebarPane.fonts) {
+                        countedLabel("Fonts", systemImage: "textformat", count: fontsCount)
+                    }
+
+                    NavigationLink(value: SidebarPane.icons) {
+                        countedLabel("Icons", systemImage: "square.grid.2x2", count: iconsCount)
+                    }
+                }
             }
             .listStyle(SidebarListStyle())
             .frame(minWidth: 200, idealWidth: 224, maxWidth: 320)
@@ -63,6 +74,10 @@ struct Sidebar: View {
                 PreviewPane(document: document)
             case .contract:
                 ContractPane(document: document)
+            case .fonts:
+                FontsPane(document: document)
+            case .icons:
+                IconsPane(document: document)
             case .none:
                 EmptyPane()
             }
@@ -138,4 +153,12 @@ struct Sidebar: View {
 
     /// Components is a fixed set of twelve bespoke contracts.
     private var componentsCount: Int { 12 }
+
+    private var fontsCount: Int {
+        document.fontData.count
+    }
+
+    private var iconsCount: Int {
+        document.iconData.count + document.spec.iconSet.sfSymbols.count
+    }
 }

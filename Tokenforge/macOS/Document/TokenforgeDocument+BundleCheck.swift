@@ -28,7 +28,12 @@ extension TokenforgeDocument {
         let logger = Logger(subsystem: "io.apparata.Tokenforge", category: "BundleCheck")
         do {
             let seedSpec = try TokenforgeSpec.loadDefaultFromBundle()
-            let wrapper = try makeBundleFileWrapper(from: seedSpec, existing: nil)
+            let seedSnapshot = TokenforgeSnapshot(
+                spec: seedSpec,
+                fontData: [:],
+                iconData: [:]
+            )
+            let wrapper = try makeBundleFileWrapper(from: seedSnapshot, existing: nil)
 
             // Structural assertions on the FileWrapper tree.
             guard wrapper.isDirectory, let root = wrapper.fileWrappers else {

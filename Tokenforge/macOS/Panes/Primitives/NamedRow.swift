@@ -43,7 +43,6 @@ struct NamedRow<Trailing: View>: View {
                 .frame(height: 14)
                 .overlay(Color.primary.opacity(0.08))
             trailing()
-            Spacer(minLength: 8)
         }
         .padding(.vertical, 6)
         .contextMenu {

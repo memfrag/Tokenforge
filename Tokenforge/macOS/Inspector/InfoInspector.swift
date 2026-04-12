@@ -64,6 +64,8 @@ struct InfoInspector: View {
         case .components: return "Component contracts"
         case .preview: return "Preview"
         case .contract: return "Contract & Export"
+        case .fonts: return "Fonts"
+        case .icons: return "Icons"
         }
     }
 
@@ -75,6 +77,8 @@ struct InfoInspector: View {
         case .components: return "12 built-in component shapes."
         case .preview: return "Live render of the current spec."
         case .contract: return "LLM contract + export outputs."
+        case .fonts: return "Custom TTF / OTF files bundled with the document."
+        case .icons: return "Custom PNG / PDF / SVG files bundled with the document."
         }
     }
 
@@ -95,7 +99,29 @@ struct InfoInspector: View {
             KeyValueGroup(pairs: previewSummaryPairs)
         case .contract:
             KeyValueGroup(pairs: contractSummaryPairs)
+        case .fonts:
+            KeyValueGroup(pairs: fontsSummaryPairs)
+        case .icons:
+            KeyValueGroup(pairs: iconsSummaryPairs)
         }
+    }
+
+    private var fontsSummaryPairs: [KeyValuePair] {
+        let bytes = document.fontData.values.reduce(0) { $0 + $1.count }
+        return [
+            KeyValuePair("Files", "\(document.fontData.count)"),
+            KeyValuePair("Registered", "\(FontRegistry.postScriptNames.count)"),
+            KeyValuePair("Total bytes", "\(bytes)")
+        ]
+    }
+
+    private var iconsSummaryPairs: [KeyValuePair] {
+        let bytes = document.iconData.values.reduce(0) { $0 + $1.count }
+        return [
+            KeyValuePair("SF Symbols", "\(document.spec.iconSet.sfSymbols.count)"),
+            KeyValuePair("Files", "\(document.iconData.count)"),
+            KeyValuePair("Total bytes", "\(bytes)")
+        ]
     }
 
     // MARK: - Per-pane pairs

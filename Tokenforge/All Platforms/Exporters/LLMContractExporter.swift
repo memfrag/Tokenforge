@@ -90,6 +90,13 @@ nonisolated enum LLMContractExporter {
             into: &markdown
         )
         appendInventorySection(
+            title: "SF Symbols",
+            items: spec.iconSet.sfSymbols.map { entry in
+                entry.caption.isEmpty ? entry.name : "\(entry.name) — \(entry.caption)"
+            },
+            into: &markdown
+        )
+        appendInventorySection(
             title: "Available components",
             items: [
                 "button", "card", "textField", "listItem",
@@ -149,6 +156,9 @@ nonisolated enum LLMContractExporter {
             rules.append("Support Dynamic Type.")
         }
         rules.append("Only one primary action visible per local action group (max \(spec.hierarchy.maxPrimaryActionsPerArea)).")
+        if !spec.iconSet.sfSymbols.isEmpty {
+            rules.append("When you need a glyph, reference one of the listed SF Symbols by name. Do not invent symbol names.")
+        }
         return rules
     }
 
