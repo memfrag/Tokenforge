@@ -20,19 +20,19 @@ struct Sidebar: View {
                 Section(header: Text("Document")) {
 
                     NavigationLink(value: SidebarPane.primitives) {
-                        Label("Primitives", systemImage: "square.stack.3d.up")
+                        countedLabel("Primitives", systemImage: "square.stack.3d.up", count: primitivesCount)
                     }
 
                     NavigationLink(value: SidebarPane.semantic) {
-                        Label("Semantic", systemImage: "link")
+                        countedLabel("Semantic", systemImage: "link", count: semanticCount)
                     }
 
                     NavigationLink(value: SidebarPane.hierarchy) {
-                        Label("Hierarchy", systemImage: "list.bullet.indent")
+                        countedLabel("Hierarchy", systemImage: "list.bullet.indent", count: hierarchyCount)
                     }
 
                     NavigationLink(value: SidebarPane.components) {
-                        Label("Components", systemImage: "square.on.square")
+                        countedLabel("Components", systemImage: "square.on.square", count: componentsCount)
                     }
 
                     NavigationLink(value: SidebarPane.preview) {
@@ -88,4 +88,54 @@ struct Sidebar: View {
             }
         }
     }
+
+    // MARK: - Counted sidebar row
+
+    /// A sidebar label that renders the usual SF Symbol + title plus a
+    /// trailing monospaced-digit count badge, matching the design
+    /// exploration. Count colors use `.tertiary` so the built-in sidebar
+    /// selection state inverts them correctly on the accent fill.
+    private func countedLabel(_ title: String, systemImage: String, count: Int) -> some View {
+        Label {
+            HStack {
+                Text(title)
+                Spacer(minLength: 6)
+                Text("\(count)")
+                    .font(.system(size: 11))
+                    .monospacedDigit()
+                    .foregroundStyle(.tertiary)
+            }
+        } icon: {
+            Image(systemName: systemImage)
+        }
+    }
+
+    // MARK: - Pane counts
+
+    private var primitivesCount: Int {
+        let p = document.spec.primitives
+        return p.color.count
+            + p.spacing.count
+            + p.radius.count
+            + p.typography.fontFamilies.count
+            + p.typography.fontSizes.count
+            + p.typography.fontWeights.count
+            + p.typography.lineHeights.count
+            + p.elevation.count
+            + p.stroke.count
+            + p.motion.durations.count
+            + p.motion.curves.count
+    }
+
+    private var semanticCount: Int {
+        let s = document.spec.semantic
+        return s.color.count + s.type.count + s.spacing.count + s.radius.count
+    }
+
+    private var hierarchyCount: Int {
+        document.spec.hierarchy.rules.count
+    }
+
+    /// Components is a fixed set of twelve bespoke contracts.
+    private var componentsCount: Int { 12 }
 }
