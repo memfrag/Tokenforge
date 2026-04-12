@@ -19,6 +19,13 @@ struct InfoInspector: View {
 
     @Environment(EngineeringMode.self) private var engineeringMode
 
+    // Raw JSON viewer state. Collapsed by default so switching to the Info
+    // tab is instant — encoding + textSelection layout over a large spec
+    // used to block the main thread on every tab switch AND every keystroke.
+    @State private var isRawJSONExpanded: Bool = false
+    @State private var rawJSONCache: String?
+    @State private var rawJSONTask: Task<Void, Never>?
+
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
@@ -31,6 +38,9 @@ struct InfoInspector: View {
             .padding(16)
         }
         .scrollBounceBehavior(.basedOnSize)
+        .onDisappear {
+            rawJSONTask?.cancel()
+        }
     }
 
     // MARK: - Header
@@ -174,36 +184,102 @@ struct InfoInspector: View {
 
     // MARK: - Raw JSON
 
+    /// Collapsed-by-default raw JSON viewer. Tab switching doesn't pay for
+    /// any encoding work because the disclosure body isn't evaluated until
+    /// the user opens it. When open, `scheduleEncoding()` runs
+    /// `spec.encodeJSON()` on a detached `Task` (the spec types are
+    /// `nonisolated` so the encode happens off-main), then hops back to
+    /// the main actor to update `rawJSONCache`. Subsequent spec edits
+    /// cancel the in-flight task and kick a fresh one, so the view stays
+    /// live while the disclosure is open — but collapsing it tears
+    /// everything down again.
     private var rawJSONSection: some View {
         VStack(alignment: .leading, spacing: 6) {
             Divider().opacity(0.4)
-            Text("RAW SPEC.JSON")
-                .font(.system(size: 10, weight: .semibold))
-                .tracking(0.6)
-                .foregroundStyle(.tertiary)
-                .padding(.top, 4)
-            ScrollView {
-                Text(rawJSON)
-                    .font(.system(size: 10, design: .monospaced))
-                    .foregroundStyle(.secondary)
-                    .textSelection(.enabled)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+            DisclosureGroup(isExpanded: $isRawJSONExpanded) {
+                rawJSONBody
+                    .padding(.top, 6)
+            } label: {
+                Text("RAW SPEC.JSON")
+                    .font(.system(size: 10, weight: .semibold))
+                    .tracking(0.6)
+                    .foregroundStyle(.tertiary)
             }
-            .frame(maxHeight: 220)
-            .padding(10)
-            .background(
-                RoundedRectangle(cornerRadius: 6, style: .continuous)
-                    .fill(Color(nsColor: .textBackgroundColor).opacity(0.5))
-            )
-            .overlay(
-                RoundedRectangle(cornerRadius: 6, style: .continuous)
-                    .stroke(.separator, lineWidth: 0.5)
-            )
+            .onChange(of: isRawJSONExpanded) { _, expanded in
+                if expanded {
+                    scheduleEncoding()
+                } else {
+                    rawJSONTask?.cancel()
+                    rawJSONTask = nil
+                    rawJSONCache = nil
+                }
+            }
+            .onChange(of: document.spec) { _, _ in
+                guard isRawJSONExpanded else {
+                    return
+                }
+                scheduleEncoding()
+            }
         }
     }
 
-    private var rawJSON: String {
-        (try? String(data: document.spec.encodeJSON(), encoding: .utf8)) ?? "(unencodable)"
+    @ViewBuilder
+    private var rawJSONBody: some View {
+        Group {
+            if let rawJSONCache {
+                ScrollView {
+                    Text(rawJSONCache)
+                        .font(.system(size: 10, design: .monospaced))
+                        .foregroundStyle(.secondary)
+                        .textSelection(.enabled)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+                .frame(maxHeight: 220)
+            } else {
+                HStack(spacing: 6) {
+                    ProgressView()
+                        .controlSize(.small)
+                    Text("Encoding spec.json…")
+                        .font(.system(size: 10.5))
+                        .foregroundStyle(.tertiary)
+                    Spacer(minLength: 0)
+                }
+                .padding(.vertical, 4)
+            }
+        }
+        .padding(10)
+        .background(
+            RoundedRectangle(cornerRadius: 6, style: .continuous)
+                .fill(Color(nsColor: .textBackgroundColor).opacity(0.5))
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 6, style: .continuous)
+                .stroke(.separator, lineWidth: 0.5)
+        )
+    }
+
+    /// Kicks off a background encoding task. Cancels any in-flight task
+    /// first and clears the cache so the UI shows the loading state until
+    /// the fresh encode lands.
+    private func scheduleEncoding() {
+        rawJSONTask?.cancel()
+        rawJSONCache = nil
+        let spec = document.spec
+        rawJSONTask = Task.detached(priority: .userInitiated) {
+            let encoded: String
+            if let data = try? spec.encodeJSON(),
+               let string = String(data: data, encoding: .utf8) {
+                encoded = string
+            } else {
+                encoded = "(unencodable)"
+            }
+            if Task.isCancelled {
+                return
+            }
+            await MainActor.run {
+                rawJSONCache = encoded
+            }
+        }
     }
 }
 
