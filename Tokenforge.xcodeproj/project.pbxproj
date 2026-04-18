@@ -11,6 +11,7 @@
 		20496FC77B21250BECF3AFCE /* KeyValueStore in Frameworks */ = {isa = PBXBuildFile; productRef = 56B304BA2868FE44C905D02A /* KeyValueStore */; };
 		23756E4CE2FB94A1469650B8 /* SettingsUI in Frameworks */ = {isa = PBXBuildFile; productRef = E5D9254636157A5E8C4CE296 /* SettingsUI */; };
 		2E1BFF1A08E61F121E885A18 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = F476BAB103482EED1E715221 /* MarkdownUI */; };
+		41431D632F943B970077C20F /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 41431D622F943B970077C20F /* Sparkle */; };
 		56F4EAF49D49165EA24B9D5A /* MathKit in Frameworks */ = {isa = PBXBuildFile; productRef = AC61FA37F4DA5575A3236B4C /* MathKit */; };
 		5D7FF13C137D267359266FF8 /* Markin in Frameworks */ = {isa = PBXBuildFile; productRef = BB94F843FE9A5B35FA78819C /* Markin */; };
 		63A7C9C9C15B2BA4DC5AFF3D /* AppDesign in Frameworks */ = {isa = PBXBuildFile; productRef = 3D6C94194C23955FD23AE965 /* AppDesign */; };
@@ -60,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41431D632F943B970077C20F /* Sparkle in Frameworks */,
 				63A7C9C9C15B2BA4DC5AFF3D /* AppDesign in Frameworks */,
 				7886C3B1F86C3B0B444059FE /* AppRouting in Frameworks */,
 				B056394277BABBABFC18B81D /* AttributionsUI in Frameworks */,
@@ -155,6 +157,7 @@
 				8035E4B7E15FEDA98D26CEA5 /* URLToolbox */,
 				6189BF675C79C59C5C239A56 /* UserDefaultsUI */,
 				63850A1D2B8DF197C9342D0A /* Zipcode */,
+				41431D622F943B970077C20F /* Sparkle */,
 			);
 			productName = Tokenforge;
 			productReference = 95BC8A5DFEE3F508FAD09579 /* Tokenforge.app */;
@@ -200,6 +203,7 @@
 				C594C11B457718172C53FFBD /* XCRemoteSwiftPackageReference "UserDefaultsUI" */,
 				2071953D05A9085C4F922E58 /* XCRemoteSwiftPackageReference "Zipcode" */,
 				5BB31D9681A9EE72D898D10B /* XCLocalSwiftPackageReference "Packages/AppDesign" */,
+				41431D612F943B960077C20F /* XCRemoteSwiftPackageReference "Sparkle" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = DAA3B5336C5E5450A48016B0 /* Products */;
@@ -320,6 +324,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = DefaultAppIcon;
+				CODE_SIGN_ENTITLEMENTS = Tokenforge/Tokenforge.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -345,10 +350,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = DefaultAppIcon;
+				CODE_SIGN_ENTITLEMENTS = Tokenforge/Tokenforge.entitlements;
 				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Tokenforge/Preview Content\"";
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = DR5YAK7GKS;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_BITCODE = NO;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
@@ -514,6 +522,14 @@
 				version = 1.0.1;
 			};
 		};
+		41431D612F943B960077C20F /* XCRemoteSwiftPackageReference "Sparkle" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sparkle-project/Sparkle";
+			requirement = {
+				kind = exactVersion;
+				version = 2.9.1;
+			};
+		};
 		62EFA4EE96E5CBD058C8AB4A /* XCRemoteSwiftPackageReference "MarkdownUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apparata/MarkdownUI.git";
@@ -644,6 +660,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B9B248BC44C7516E8A1D2240 /* XCRemoteSwiftPackageReference "BinaryDataKit" */;
 			productName = BinaryDataKit;
+		};
+		41431D622F943B970077C20F /* Sparkle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 41431D612F943B960077C20F /* XCRemoteSwiftPackageReference "Sparkle" */;
+			productName = Sparkle;
 		};
 		56B304BA2868FE44C905D02A /* KeyValueStore */ = {
 			isa = XCSwiftPackageProductDependency;
