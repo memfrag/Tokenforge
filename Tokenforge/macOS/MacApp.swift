@@ -30,6 +30,7 @@ struct MacApp: App {
         DocumentGroup(newDocument: { TokenforgeDocument() }) { configuration in
             DocumentWindow(document: configuration.document)
         }
+        .windowResizability(.contentMinSize)
         .commands {
             AboutCommand()
             SidebarCommands()

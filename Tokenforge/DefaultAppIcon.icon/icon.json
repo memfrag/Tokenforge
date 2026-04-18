@@ -1,14 +1,44 @@
 {
-  "fill" : {
-    "solid" : "gray:1.00000,1.00000"
-  },
+  "fill-specializations" : [
+    {
+      "value" : {
+        "solid" : "extended-gray:1.00000,1.00000"
+      }
+    },
+    {
+      "appearance" : "dark",
+      "value" : {
+        "linear-gradient" : [
+          "display-p3:0.09381,0.09381,0.09381,1.00000",
+          "srgb:0.06790,0.06790,0.06790,1.00000"
+        ],
+        "orientation" : {
+          "start" : {
+            "x" : 0.5,
+            "y" : 0
+          },
+          "stop" : {
+            "x" : 0.5,
+            "y" : 0.7
+          }
+        }
+      }
+    }
+  ],
   "groups" : [
     {
       "layers" : [
         {
           "glass" : false,
-          "image-name" : "hammer-blueprint.png",
-          "name" : "hammer-blueprint"
+          "image-name" : "Anvil.png",
+          "name" : "Anvil",
+          "position" : {
+            "scale" : 1.3,
+            "translation-in-points" : [
+              11.3046875,
+              67.234375
+            ]
+          }
         }
       ],
       "shadow" : {

@@ -16,7 +16,7 @@ struct DocumentWindow: View {
 
     var body: some View {
         Sidebar(document: document)
-            .frame(minWidth: 960, minHeight: 620)
+            .frame(minWidth: 1200, minHeight: 620)
             .appEnvironment(.default)
             .focusedSceneValue(\.tokenforgeDocument, document)
     }

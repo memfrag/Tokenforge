@@ -66,7 +66,7 @@ struct PreviewPane: View {
         Pane {
             HStack(spacing: 0) {
                 SampleList(selection: $selectedSample)
-                    .frame(width: 220)
+                    .frame(width: 180)
                     .background(Color(nsColor: .textBackgroundColor).opacity(0.55))
                 Divider().ignoresSafeArea()
                 stage
@@ -85,15 +85,23 @@ struct PreviewPane: View {
                 EmptyView()
             }
 
-            PreviewControls(
-                appearance: $appearance,
-                state: $state,
-                showEmphasisOverlay: $showEmphasisOverlay
-            )
-            .padding(.horizontal, 28)
-            .padding(.top, 14)
+            // Horizontal ScrollView so the row of pickers doesn't impose its
+            // intrinsic min width on the pane and push the sidebar offscreen
+            // when the window is narrow.
+            ScrollView(.horizontal, showsIndicators: false) {
+                PreviewControls(
+                    appearance: $appearance,
+                    state: $state,
+                    showEmphasisOverlay: $showEmphasisOverlay
+                )
+                .padding(.horizontal, 28)
+                .padding(.top, 14)
+            }
+            .scrollBounceBehavior(.basedOnSize)
 
-            ScrollView {
+            // Bidirectional ScrollView so the 340pt iPhone frame can scroll
+            // horizontally when the window is narrower than the iPhone is wide.
+            ScrollView([.vertical, .horizontal]) {
                 VStack {
                     iPhoneFrame(appearance: appearance) {
                         sampleContent

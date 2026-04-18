@@ -374,5 +374,25 @@
       }
     ]
   },
+  "iconSet": {
+    "sfSymbols": [
+      { "name": "chevron.right", "caption": "disclosure / forward navigation" },
+      { "name": "chevron.left", "caption": "back navigation" },
+      { "name": "xmark", "caption": "dismiss / close" },
+      { "name": "checkmark", "caption": "confirmation / selected" },
+      { "name": "plus", "caption": "add / create" },
+      { "name": "magnifyingglass", "caption": "search" },
+      { "name": "ellipsis", "caption": "more actions" },
+      { "name": "gearshape", "caption": "settings" },
+      { "name": "person.crop.circle", "caption": "account / profile" },
+      { "name": "bell", "caption": "notifications" },
+      { "name": "heart", "caption": "favorite" },
+      { "name": "star", "caption": "rating / featured" },
+      { "name": "trash", "caption": "delete" },
+      { "name": "square.and.arrow.up", "caption": "share" },
+      { "name": "info.circle", "caption": "info / help" },
+      { "name": "exclamationmark.triangle", "caption": "warning" }
+    ]
+  },
   "lastExportBookmarkID": null
 }
